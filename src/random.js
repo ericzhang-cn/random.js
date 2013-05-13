@@ -159,16 +159,77 @@
         return mu + sigma * p1 * sqrt(-2 * log(p) / p);
     };
 
+    exports.parabolic = function (min ,max) {
+        var parabola = function (x, min, max) {
+            if (x < min || x > max) {
+                return 0.0;
+            }
+
+            var a = 0.5 * (min + max),
+                b = 0.5 * (max - min),
+                yMax = 3 / (4 * b);
+
+            return yMax * (1 - (x - a) * (x - a) / (b * b));
+        };
+
+        var a = 0.5 * (min  + max),
+            yMax = parabola(a, min + max);
+
+        return _this.userSpecified(parabola, min ,max, 0, yMax);
+    };
+
+    exports.pareto = function (c) {
+        return pow(_this.uniform(0, 1), -1 / c);
+    };
+
+    exports.pearson5 = function (b, c) {
+        return 1 / _this.gamma(0, 1 / b, c);
+    };
+
+    exports.pearson6 = function (b, v, w) {
+        return _this.gamma(0, b, v) / _this.gamma(0, b, w);
+    };
+
     exports.power = function (c) {
         return pow(_this.uniform(0, 1), 1 / c);
+    };
+
+    exports.rayleigh = function (a, b) {
+        return a + b * sqrt(-log(_this.uniform(0, 1)));
     };
 
     exports.studentT = function (df) {
         return _this.normal(0, 1) / sqrt(_this.chiSquare(df) / df);
     };
 
+    exports.triangular = function (min, max, c) {
+        var p = _this.uniform(0, 1),
+            q = 1 - p;
+        if (p <= (c - min) / (max - min)) {
+            return min + sqrt((max - min) * (c - min) * p);
+        } else {
+            return max - sqrt((max - min) * (max - c) * q);
+        }
+    };
+
     exports.uniform = function (min, max) {
         return min + (max - min) * random();
+    };
+
+    exports.userSpecified(usf, xMin, xMax, yMin, yMax) {
+        var x,
+            y,
+            areaMax = (xMax - xMin) * (yMax - yMin);
+
+        do {
+            x = _this.uniform(0, areaMax) / (yMax - yMin) + xMin;
+            y = _this.uniform(yMin, yMax);
+        } while (y > ysf(x, xMin, xMax));
+        return x;
+    };
+
+    exports.weibull = function (a, b, c) {
+        return a + b * pow(-log(_this.uniform(0, 1)), 1 / c);
     };
 
     exports.bernoulli = function (p) {
@@ -198,6 +259,19 @@
         }
 
         return count;
+    };
+
+    exports.negativeBinomial = function (s, p) {
+        var sum = 0;
+        for (var i = 0; i < s; i++) {
+            sum += _this.geometric(p);
+        }
+
+        return sum;
+    };
+
+    exports.pascal = function (s, p) {
+        return _this.negativeBinomial(s, p) + s;
     };
 
     exports.poisson = function (mu) {
