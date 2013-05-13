@@ -27,8 +27,23 @@
         return min + (max - min) * q * q;
     };
 
+    exports.beta = function (v, w, min, max) {
+        if (v < w) {
+            return max - (max - min) * _this.beta(w, v);
+        }
+        var y1 = _this.gamma(0, 1, v),
+            y1 = _this.gamma(0, 1, w);
+
+        return min + (max - min) * y1 / (y1 + y2);
+
+    };
+
     exports.cauchy = function (a, b) {
         return a + b * tan(PI * _this.uniform(-0.5, 0.5));
+    };
+
+    exports.chiSquare = function (df) {
+        return _this.gamma(0, 2, 0.5 * df);
     };
 
     exports.cosine = function (min, max) {
@@ -62,11 +77,74 @@
         return a - b * log(_this.uniform(0, 1));
     };
 
+    exports.extremeValue = function (a, b) {
+        return a + b * log(-log(_this.uniform(0, 1)));
+    };
+
+    exports.fRadio = function (v, w) {
+        return (_this.chiSquare(v) / v) / (_this.chiSquare(w) / w);
+    };
+
+    exports.gamma(a, b, c) {
+        var A = 1 / sqrt(2 * c - 1),
+            B = c - log(4),
+            Q = c + 1 / A,
+            T = 4.5,
+            D = 1 + log(T),
+            C = 1 + c / E;
+
+        if (c < 1) {
+            while (true) {
+                var p = C * _this.uniform(0, 1);
+                if (p > 1) {
+                    var y = -log((C - p) / c);
+                    if (_this.uniform(0, 1) <= pow(y, c - 1)) {
+                        return a + b * y;
+                    }
+                } else {
+                    var y = pow(p, 1 / c);
+                    if (_this.uniform(0, 1) <= exp(-y)) {
+                        return a + b * y;
+                    }
+                }
+            }
+        } else if (c == 1.0) {
+            return _this.exponential(a, b);
+        } else {
+            while (true) {
+                var p1 = _this.uniform(0, 1),
+                    p2 = _this.uniform(0, 1),
+                    v = A * log(p1 / (1 - p1)),
+                    y = c * exp(v),
+                    z = p1 * p1 * p2,
+                    w = B + Q * v - y;
+                if (w + D - T * z > 0 || w >= log(z)) {
+                    return a + b * y
+                }
+            }
+        }
+    };
+
+    exports.laplace = function (a, b) {
+        if (_this.bernoulli(0.5) == 1) {
+            return a + b * log(_this.uniform(0, 1));
+        } else {
+            return a - b * log(_this.uniform(0, 1));
+        }
+    };
+
+    exports.logarithmic = function (min, max) {
+        var a = min,
+            b = max - min;
+
+        return a + b * _this.uniform(0, 1) * _this.uniform(0, 1);
+    };
+
     exports.logistic = function (a, b) {
         return a - b * log(1 / _this.uniform(0, 1) - 1);
     };
 
-    exports.logNormal = function (a, mu, sigma) {
+    exports.lognormal = function (a, mu, sigma) {
         return a + exp(_this.normal(mu, sigma));
     };
 
@@ -83,6 +161,10 @@
 
     exports.power = function (c) {
         return pow(_this.uniform(0, 1), 1 / c);
+    };
+
+    exports.studentT = function (df) {
+        return _this.normal(0, 1) / sqrt(_this.chiSquare(df) / df);
     };
 
     exports.uniform = function (min, max) {
