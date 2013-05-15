@@ -29,13 +29,12 @@
 
     exports.beta = function (v, w, min, max) {
         if (v < w) {
-            return max - (max - min) * _this.beta(w, v);
+            return max - (max - min) * _this.beta(w, v, min, max);
         }
         var y1 = _this.gamma(0, 1, v),
-            y1 = _this.gamma(0, 1, w);
+            y2 = _this.gamma(0, 1, w);
 
         return min + (max - min) * y1 / (y1 + y2);
-
     };
 
     exports.cauchy = function (a, b) {
@@ -85,7 +84,7 @@
         return (_this.chiSquare(v) / v) / (_this.chiSquare(w) / w);
     };
 
-    exports.gamma(a, b, c) {
+    exports.gamma = function (a, b, c) {
         var A = 1 / sqrt(2 * c - 1),
             B = c - log(4),
             Q = c + 1 / A,
@@ -216,7 +215,7 @@
         return min + (max - min) * random();
     };
 
-    exports.userSpecified(usf, xMin, xMax, yMin, yMax) {
+    exports.userSpecified = function (usf, xMin, xMax, yMin, yMax) {
         var x,
             y,
             areaMax = (xMax - xMin) * (yMax - yMin);
