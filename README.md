@@ -1,5 +1,7 @@
 Random number generator of statistical distributions.
 
+Demo: [http://ml.codinglabs.org/v/distributions.html](http://ml.codinglabs.org/v/distributions.html)
+
 ## How to Use
 ### Browsers
 
@@ -69,4 +71,24 @@ triangular(min, max, c);
 
 uniform(min, max);
 
+userSpecified(usf, xMin, xMax, yMin, yMax);
+
 weibull(a, b, c);
+
+### Discrete Distributions
+
+bernoulli(p);
+
+binomial(n, p);
+
+geometric(p);
+
+hypergeometric(n, N, k);
+
+negativeBinomial(s, p);
+
+pascal(s, p);
+
+poisson(mu);
+
+uniformDiscrete(i, j);
