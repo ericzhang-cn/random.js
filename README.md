@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ericzhang-cn/random.js.png)](https://travis-ci.org/ericzhang-cn/random.js])
+
 Random number generator of statistical distributions.
 
 Demo: [http://ml.codinglabs.org/v/distributions.html](http://ml.codinglabs.org/v/distributions.html)
