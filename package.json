@@ -1,0 +1,20 @@
+{
+  "name": "random-distrib.js",
+  "version": "0.0.1",
+  "description": "Random number generator of statistical distributions",
+  "main": "./src/random.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ericzhang-cn/random.js.git"
+  },
+  "keywords": [
+    "random",
+    "distribution"
+  ],
+  "author": "Eric Zhang",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
