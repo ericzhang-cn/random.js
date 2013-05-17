@@ -1,6 +1,6 @@
 {
   "name": "random-distrib.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Random number generator of statistical distributions",
   "main": "./src/random.js",
   "scripts": {
