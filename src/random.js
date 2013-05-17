@@ -80,7 +80,7 @@
         return a + b * log(-log(_this.uniform(0, 1)));
     };
 
-    exports.fRadio = function (v, w) {
+    exports.fRatio = function (v, w) {
         return (_this.chiSquare(v) / v) / (_this.chiSquare(w) / w);
     };
 
@@ -223,7 +223,7 @@
         do {
             x = _this.uniform(0, areaMax) / (yMax - yMin) + xMin;
             y = _this.uniform(yMin, yMax);
-        } while (y > ysf(x, xMin, xMax));
+        } while (y > usf(x, xMin, xMax));
         return x;
     };
 
@@ -251,6 +251,7 @@
     exports.hypergeometric = function (n, N, K) {
         var count = 0;
         for (var i = 0; i < n; i++, N--) {
+            var p = K / N;
             if (_this.bernoulli(p)) {
                 count++;
                 K--;
