@@ -6,7 +6,12 @@ Demo: [http://ml.codinglabs.org/v/distributions.html](http://ml.codinglabs.org/v
 
 Algorithm reference: [http://ftp.arl.mil/random/random.pdf](http://ftp.arl.mil/random/random.pdf)
 
-## Quick Start
+
+## Installation
+
+    npm install random-distrib.js
+
+## Example
 ### Browsers
 
     <script type="text/javascript" src="/path/to/random.js"></script>
