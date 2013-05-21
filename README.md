@@ -8,28 +8,30 @@ Algorithm reference: [http://ftp.arl.mil/random/random.pdf](http://ftp.arl.mil/r
 
 
 ## Installation
-
-    npm install random-distrib.js
+```bash
+npm install random-distrib.js
+```
 
 ## Example
 ### Browsers
+```html
+<script type="text/javascript" src="/path/to/random.js"></script>
 
-    <script type="text/javascript" src="/path/to/random.js"></script>
-    
-    <!-- html -->
+<!-- html -->
 
-    <script type="text/javascript">
-        var newPoint = random.normal(0, 1);
-    </script>
+<script type="text/javascript">
+    var newPoint = random.normal(0, 1);
+</script>
+```
 
 ### Node
-
-    var random = require('/path/to/random');
-    var newPoint = random.normal(0, 1);
+```javascript
+var random = require('/path/to/random');
+var newPoint = random.normal(0, 1);
+```
 
 ## Probability Distribution Functions
 ### Continuous Distributions
-
 arcsine(min, max); 
 
 beta(v, w, min, max); 
@@ -85,7 +87,6 @@ userSpecified(usf, xMin, xMax, yMin, yMax);
 weibull(a, b, c);
 
 ### Discrete Distributions
-
 bernoulli(p);
 
 binomial(n, p);
