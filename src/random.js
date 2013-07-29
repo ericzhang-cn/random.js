@@ -29,7 +29,7 @@
 
     exports.beta = function (v, w, min, max) {
         if (v < w) {
-            return max - (max - min) * _this.beta(w, v, min, max);
+            return max - (max - min) * _this.beta(w, v, 0, 1);
         }
         var y1 = _this.gamma(0, 1, v),
             y2 = _this.gamma(0, 1, w);
