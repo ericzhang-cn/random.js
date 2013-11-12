@@ -2,7 +2,7 @@
 
 Random number generator of statistical distributions.
 
-Demo: [http://ml.codinglabs.org/v/distributions.html](http://ml.codinglabs.org/v/distributions.html)
+Demo: [http://blog.codinglabs.org/demo/distributions.html](http://blog.codinglabs.org/demo/distributions.html)
 
 Algorithm reference: [http://ftp.arl.mil/random/random.pdf](http://ftp.arl.mil/random/random.pdf)
 
