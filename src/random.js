@@ -19,7 +19,7 @@
         random = Math.random,
         sin    = Math.sin,
         sqrt   = Math.sqrt,
-        tan    = Math.tan
+        tan    = Math.tan;
 
     exports.arcsine = function (min, max) {
         var q = sin(PI_2 * _this.uniform(0, 1));
@@ -48,7 +48,7 @@
     exports.cosine = function (min, max) {
         var a = 0.5 * (min + max),
             b = (max - min) / PI;
-        
+
         return a + b * asin(_this.uniform(-1, 1));
     };
 
@@ -64,8 +64,9 @@
 
     exports.erlang = function (b, c) {
         var prod = 1.0;
+        var i = 1;
 
-        for (var i = 1; i <c; i++) {
+        for (i = 1; i < c; i++) {
             prod *= _this.uniform(0, 1);
         }
 
