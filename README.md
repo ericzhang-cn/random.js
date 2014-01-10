@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/ericzhang-cn/random.js.png)](https://travis-ci.org/ericzhang-cn/random.js])
 
-Random number generator of statistical distributions.
+Random number generator of many statistical distributions.
 
 Demo: [http://blog.codinglabs.org/demo/distributions.html](http://blog.codinglabs.org/demo/distributions.html)
 

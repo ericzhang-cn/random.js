@@ -1,7 +1,7 @@
 {
   "name": "random-distrib.js",
-  "version": "0.0.3",
-  "description": "Random number generator of statistical distributions",
+  "version": "0.0.4",
+  "description": "Random number generator of many statistical distributions",
   "main": "./src/random.js",
   "scripts": {
     "test": "make test"
