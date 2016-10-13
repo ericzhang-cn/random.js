@@ -233,7 +233,7 @@
     };
 
     exports.bernoulli = function (p) {
-        return _this.uniform(0, 1) < p ? 0 : 1;
+        return _this.uniform(0, 1) < p ? 1 : 0;
     };
 
     exports.binomial = function (n, p) {
